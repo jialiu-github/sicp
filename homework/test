@@ -1,0 +1,6 @@
+(define (equal a b) (= a b))
+(equal 10 10)
+(equal (+ 5 3 4) 12)
+(equal (- 9 1) 8)
+(equal (/ 6 2) 3)
+(equal (+ (* 2 4) (- 4 6)) 6)

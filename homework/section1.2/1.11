@@ -1,0 +1,30 @@
+(define (recursive-f n)
+    (if (< n 3)
+        n
+        (+ (recursive-f (- n 1))
+           (* 2 (recursive-f (- n 2)))
+           (* 3 (recursive-f (- n 3)))
+        )))
+
+
+(recursive-f 4)
+
+(define (f a b c)
+    (+ a
+       (* 2 b)
+       (* 3 c)))
+
+(define (iterative-f n)
+    (iter-f 2 1 0 n))
+
+(define (iter-f a b c n)
+        (cond ((< n 3) n)
+              ((= n 3) (f a b c))
+              (else 
+                (iter-f (f a b c)
+                        a
+                        b
+                        (- n 1))))
+        )
+
+(iterative-f 4)

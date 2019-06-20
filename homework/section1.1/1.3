@@ -1,0 +1,19 @@
+(define (square x) (* x x))
+
+(define (sum-of-squares x y)
+        (+ (square x) (square y)))
+
+(define (min x y)
+        (if (< x y) x y))
+
+(define (mins x y z)
+        (min (min x y) (min x z)))
+
+(define (max-sum-of-squares x y z)
+        (cond (= x (mins x y z) (sum-of-squares y z))
+              (= y (mins x y z) (sum-of-squares x z))
+              (= z (mins x y z) (sum-of-squares x y))
+        ))
+
+(= (max-sum-of-squares 1 2 3)
+    13)

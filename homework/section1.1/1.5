@@ -1,0 +1,6 @@
+//for applicative-order evaluation
+(test 0 (p))
+(if (= 0 0) 0 (p)) ;0
+
+//for normal-order evaluation
+(test 0 (p)) ;try to calculate (p) but can't get the result

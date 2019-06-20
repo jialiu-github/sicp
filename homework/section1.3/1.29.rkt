@@ -1,0 +1,38 @@
+(load "cube.rkt")
+(load "sum.rkt")
+(load "inc.rkt")
+(load "integral.rkt")
+#|方法一：提取y的系数函数，当i=0 or n时为1，奇数时为4，偶数时为2|#
+(define (simpson f a b n)
+    (define (coe i n) 
+            (cond ((= i 0) 1)
+                  ((= i n) 1)
+                  ((even? i) 2)
+                  ((odd? i) 4)
+            ))
+    (define (term i)
+            (* (coe i n)
+               (f (+ a (* i (/ (- b a) n))))))
+    (*  (/ (/ (- b a) n) 3.0)
+        (sum term 0 inc n))
+)
+#|方法二:方括号中的式子分解为三个求和过程，
+第一个：从0到n求y(i)的和
+第二个：从1到n-1求y(i)的和
+第三个：2倍的奇数集1到n-1求y(i)的和|#
+(define (simpson2 f a b n)
+    (let ((h (/ (- b a) n)))
+        (define (y k) (f (+ a (* k h))))
+        (define (plus-2 i) (+ i 2))
+        (* (/ h 3.0)
+        (+ (sum y 0 inc n)
+           (sum y 1 inc (- n 1))
+           (* 2.0 (sum y 1 plus-2 (- n 1)))
+        ))))
+
+(simpson cube 0 1 100)
+(simpson2 cube 0 1 100)
+(integral cube 0 1 0.01)
+(simpson cube 0 1 1000)
+(simpson2 cube 0 1 1000)
+(integral cube 0 1 0.001)

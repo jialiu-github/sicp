@@ -1,0 +1,6 @@
+(define (compose f g)
+    (lambda (x)
+        (f (g x))))
+(load "inc.rkt")
+(load "square.rkt")
+((compose square inc) 6)

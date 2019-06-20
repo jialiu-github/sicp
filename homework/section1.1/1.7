@@ -1,0 +1,26 @@
+(load "1.6")
+#| for small numbers, should return 0.03.|#
+(sqrt 0.0009)
+
+#| for large numbers, will be dead.|#
+#|(sqrt 1e50)|#
+
+(define (good-enough? old-guess new-guess)
+        (< (/ (abs (- new-guess old-guess)) guess 0.01))
+
+(define (sqrt-iter old-guess new-guess x)
+        (if (good-enough? new-guess old-guess)
+        new-guess
+        (sqrt-iter new-guess (improve new-guess x) x)))
+
+(define (sqrt x)
+        (sqrt-iter 0 1.0 x))
+    
+#|For small number 0.0009, should return 0.03. New method is better then old|#
+(sqrt 0.0009)
+
+#|But for small number 0.000009, should return 0.003.New method still can't get the right sqrt.|#
+(sqrt (* 0.003 0.003))
+
+#|For large number 1e50, new method can get the right sqrt. Because the old-guess is at the same order of magnitude with new-guess.|#
+(sqrt 1e50)

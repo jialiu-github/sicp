@@ -1,0 +1,6 @@
+(define (filter-accumulate filter combiner null-value term a next b)
+    (cond ((> a b) null-value)
+          ((filter a) 
+           (combiner (term a)
+                     (filter-accumulate filter combiner null-value term (next a) next b)))
+          (else (filter-accumulate filter combiner null-value term (next a) next b))))
