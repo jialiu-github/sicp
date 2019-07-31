@@ -1,0 +1,21 @@
+(define (power x y)
+        (cond ((= x 0) 0)
+              ((= y 0) 1)
+              ((= y 1) x)
+              (else (* x (power x (- y 1))))
+        ))
+
+(define (count-power x y)
+    (if (= (remainder x y) 0)
+        (+ 1 (count-power (/ x y) y))
+        0)
+)
+
+(define (cons-p a b)
+    (* (power 2 a) (power 3 b)))
+(define (car-p pair) (count-power pair 2))
+(define (cdr-p pair) (count-power pair 3))
+
+(define p (cons-p 10 3))
+(car-p p)
+(cdr-p p)

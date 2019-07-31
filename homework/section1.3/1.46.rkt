@@ -1,11 +1,11 @@
-(define (iterative-improve good-enough next-guess)
+(define (iterative-improve good-enough? next-guess)
     (lambda (guess)
-        (if (good-enough guess)
+        (if (good-enough? guess)
             guess
-            (iterative-improve good-enough (next-guess guess)))))
+            (iterative-improve good-enough? (next-guess guess)))))
 
-
-(load "square.rkt")
+(define (square x)
+    (* x x))
 (define (average x y)
     (/ (+ x y) 2))
 

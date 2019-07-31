@@ -1,4 +1,3 @@
-#|mark|#
 (define tolerance 0.000001)
 (define (fixed-point f first-guess)
     (define (close-enough? v1 v2)
