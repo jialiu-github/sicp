@@ -1,0 +1,17 @@
+(load "2.7.rkt")
+(load "2.8.rkt")
+(define (mul-interval x y)
+    (let ((p1 (* (lower-bound x) (lower-bound y)))
+          (p2 (* (lower-bound x) (upper-bound y)))
+          (p3 (* (upper-bound x) (lower-bound y)))
+          (p4 (* (upper-bound x) (upper-bound y))))
+         (make-interval (mins p1 p2 p3 p4) (maxs p1 p2 p3 p4))
+    )
+)
+(define (div-interval x y)
+    (if (> 0 (* (lower-bound y) (upper-bound y)))
+        error
+        (mul-interval x
+                    (make-interval (/ 1.0 (upper-bound y))
+                                    (/ 1.0 (lower-bound y)))))
+)
