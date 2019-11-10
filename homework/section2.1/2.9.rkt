@@ -8,10 +8,10 @@
                    (+ (upper-bound x) (upper-bound y)))
 )
 
-width(i) = (i-upper - i-lower) / 2
-interval = add-interval(x, y)
-interval-lower = x-lower + y-lower
-interval-upper = x-upper + y-upper
-width(interval) = ((x-upper + y-upper) - (x-lower + y-lower)) / 2
-                = ((x-upper - x-lower) + (y-upper - y-lower)) / 2
-                = width(x) + width(y)
+;width(i) = (i-upper - i-lower) / 2
+;interval = add-interval(x, y)
+;interval-lower = x-lower + y-lower
+;interval-upper = x-upper + y-upper
+;width(interval) = ((x-upper + y-upper) - (x-lower + y-lower)) / 2
+;                = ((x-upper - x-lower) + (y-upper - y-lower)) / 2
+;                = width(x) + width(y)
