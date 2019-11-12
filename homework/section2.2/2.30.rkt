@@ -1,4 +1,3 @@
-
 (define (leave? tree)
     (not (pair? tree)))
 
